@@ -9,12 +9,12 @@
 .settings/
 .classpath
 
+
 # Java
 *.jar
 *.class
 target/
 bin/
-
 
 # Node
 node_modules/
