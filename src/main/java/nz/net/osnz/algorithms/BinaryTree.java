@@ -17,6 +17,29 @@ public class BinaryTree {
       this.data = v;
     }
 
+    Node find(int value) {
+
+      if (value == data) {
+        return this;
+      }
+
+      if (left == null && right == null) {
+        return null;
+      }
+
+      Node result = null;
+      if (left != null) {
+        result = left.find(value);
+      }
+
+      if (result != null && result.data == value) {
+        return result;
+      }
+
+      return right.find(value);
+
+    }
+
   }
 
   Node root;

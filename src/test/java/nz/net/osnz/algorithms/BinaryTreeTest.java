@@ -54,4 +54,30 @@ public class BinaryTreeTest {
     Assertions.assertEquals(expect, findNode(node, 1, 16));
   }
 
+  @Test
+  public void testFind() {
+    BinaryTree.Node node = new BinaryTree.Node(8);
+
+    node.left = new BinaryTree.Node(3);
+    node.right = new BinaryTree.Node(10);
+
+    node.left.left = new BinaryTree.Node(1);
+    node.left.right = new BinaryTree.Node(6);
+
+    node.right.left = null;
+    node.right.right = new BinaryTree.Node(14);
+
+    node.left.left.left = null;
+    node.left.left.right = null;
+
+    node.left.right.left = new BinaryTree.Node(4);
+    node.left.right.right = new BinaryTree.Node(7);
+
+    node.right.right.left = new BinaryTree.Node(13);
+    node.right.right.right = null;
+
+    BinaryTree.Node target = node.find(14);
+    Assertions.assertEquals(14, target.data);
+  }
+
 }
