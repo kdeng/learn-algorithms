@@ -31,26 +31,36 @@ public class Solution_3_LongestSubstringWithoutRepeatingCharacters {
   }
 
   public int myLengthOfLongestSubstring(String s) {
-
     int longestLength = 0;
-
-
     for (int idx = 0; idx < s.length(); idx++) {
       Set<Character> substring = new HashSet<>();
       substring.add(s.charAt(idx));
-
       for (int jumper = idx+1; jumper < s.length(); jumper ++) {
         if (substring.contains(s.charAt(jumper))) {
           break;
         }
         substring.add(s.charAt(jumper));
       }
-
       longestLength = Math.max(longestLength, substring.size());
-
     }
-
     return longestLength;
+  }
+  
+  /**
+   * another solution at 21/12/2021
+   */
+  public int lengthOfLongestSubstring3(String s) {
+    int max = 0;
+    String temp = "";
+    for (int i=0; i<s.length(); i++) {
+      int idx = temp.indexOf(s.charAt(i));
+      if (idx >= 0) {                
+        temp = temp.substring(idx+1);
+      }
+      temp += s.charAt(i);
+      max = temp.length() > max ? temp.length() : max;
+    }
+    return max;
   }
 
 
