@@ -67,6 +67,19 @@ public class Solution_4_MedianOfTwoSortedArrays {
     return (((double) list.get(length / 2 - 1)) + ((double) list.get(length / 2))) / 2;
 
   }
+  
+  public double newFindMedianSortedArrays(int[] nums1, int[] nums2) {
+    int[] joinedArray = IntStream.concat(Arrays.stream(nums1), Arrays.stream(nums2)).toArray();
+    int len = joinedArray.length;
+    Arrays.sort(joinedArray);
+
+    if (len % 2 == 0) {
+      int mid = len / 2;
+      return (joinedArray[mid] + joinedArray[mid - 1]) / 2D;
+    }
+
+    return joinedArray[(len - 1) / 2];
+  }
 
 
   @Test
